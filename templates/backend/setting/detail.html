@@ -1,0 +1,49 @@
+{% extends "backend/layouts/section.html" %}
+{% block mainsection %}
+<div class="row">
+    <h2 class="text-center">Detail Setting</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <td>{{record.id}}</td>
+        </tr>
+        <tr>
+            <th>Site Title</th>
+            <td>{{record.site_title}}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{record.email}}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{record.phone}}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{record.address}}</td>
+        </tr>
+        {% if record.main_image %}
+        <tr>
+            <th>Main Image</th>
+            <td><img src="{{record.main_image.url}}" alt="" width="100px" height="100px"></td>
+        </tr>
+        {% endif %}
+        {% if record.logo_header %}
+        <tr>
+            <th> Image</th>
+            <td><img src="{{record.logo_header.url}}" alt="" width="100px" height="100px"></td>
+        </tr>
+        {% endif %}
+        {% if record.fav_icon %}
+        <tr>
+            <th>Main Image</th>
+            <td><img src="{{record.fav_icon.url}}" alt="" width="100px" height="100px"></td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th><a href="{% url "backend_setting_update" record.pk %}" class="btn btn-warning">Update</a></th>
+        </tr>
+    </table>
+</div>
+{% endblock %}

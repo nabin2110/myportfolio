@@ -1,0 +1,33 @@
+{% extends "backend/layouts/section.html" %}
+{% block mainsection %}
+<div class="row">
+    {% include "backend/layouts/message.html" %}
+    <h2 class="text-center">Create Setting</h2>
+    <form action="" method="POST" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% for field in form %}
+        <div class="mb-3">
+            <div class="form-group">
+                {{ field.label_tag}}
+                <div class="text-danger">{{ field }}</div>
+                
+            </div>
+            {% if field.errors %}
+                    <span class="text-danger">{{ field.errors|striptags }}</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Create</button>
+            </div>    
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+<nav class="sidebar">
+  <div class="logo d-flex justify-content-between">
+    <a href="index.html"><img src="{% static "backend/img/logo.png" %}" alt></a>
+    <div class="sidebar_close_icon d-lg-none">
+      <i class="ti-close"></i>
+    </div>
+  </div>
+  <ul id="sidebar_menu">
+    <li class="mm-active">
+      <a class="has-arrow" href="{% url "backend_portfolio_home" %}" aria-expanded="false">
+        <img src="{% static "backend/img/menu-icon/1.svg" %}" alt>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class>
+      <a class="has-arrow" href="#" aria-expanded="false">
+        <img src="{% static "backend/img/menu-icon/2.svg" %}" alt>
+        <span>Service</span>
+      </a>
+      <ul>
+        <li><a href="{% url "backend_service_list" %}">View Services</a></li>
+        <li><a href="{% url "backend_service_create" %}">Create Service</a></li>
+      </ul>
+    </li>
+    <li class>
+      <a class="has-arrow" href="#" aria-expanded="false">
+        <img src="{% static "backend/img/menu-icon/2.svg" %}" alt>
+        <span>About Me</span>
+      </a>
+      <ul>
+        <li><a href="{% url "backend_aboutme_create" %}">View About Me</a></li>
+      </ul>
+    </li>
+    <li class>
+        <a class="has-arrow" href="#" aria-expanded="false">
+          <img src="{% static "backend/img/menu-icon/2.svg" %}" alt>
+          <span>Setting</span>
+        </a>
+        <ul>
+          <li><a href="{% url "backend_setting_create" %}">View Setting</a></li>
+        </ul>
+      </li>
+  </ul>
+</nav>

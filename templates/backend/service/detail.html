@@ -1,0 +1,35 @@
+{% extends "backend/layouts/section.html" %}
+{% block mainsection %}
+<div class="row">
+    <h2 class="text-center">Detail Service <a href="{% url "backend_service_list" %}" class="btn btn-info">List Service</a></h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <td>{{record.id}}</td>
+        </tr>
+        <tr>
+            <th>Icon</th>
+            <td>{{record.icon}}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{record.title}}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{record.description|safe}}</td>
+        </tr>
+        <tr>
+            <th><a href="{% url "backend_service_update" record.pk %}" class="btn btn-warning">Update</a></th>
+        </tr>
+        <tr>
+            <th>
+                <form action="{% url "backend_service_delete" record.pk %}" method="post" onclick="return confirm('Are you sure you want to delete this?')">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </th>
+        </tr>
+    </table>
+</div>
+{% endblock %}
