@@ -1,0 +1,110 @@
+<!doctype html>
+{% load static %}
+<html lang="en" class="no-js">
+<head>
+    <title>{{setting.site_title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{{setting.fav_icon.url}}">
+    <link rel="stylesheet" href="{% static "frontend/assets/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/assets/css/et-lineicons.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/assets/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/assets/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/assets/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "frontend/assets/css/style-animations.css" %}"> 
+    {% block css %}{% endblock %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144098545-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-144098545-1');
+    </script>
+    
+    </head>
+
+<body class="cv has-additional-menu-content">
+    <header id="identity">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="{% url "frontend_homepage" %}" class="logo-link" rel="home"> <img src="{{setting.logo_header.url}}" class="logo" alt=""> </a>
+        </div>
+    </header>
+    <!-- Menu -->
+    <div id="site-menu">
+      {% include "frontend/layouts/menu.html" %}
+    </div>
+    <div class="menu-overlay"></div>
+    <div class="site-menu-toggle">
+        <a href="about.html#site-menu" class="ti"> <span class="screen-reader-text">Toggle navigation</span> </a>
+    </div>
+    <!-- Social Media -->
+    <div id="social-profiles">
+        <nav class="social-menu">
+            <ul>
+                <li class="menu-item"><a href="https://facebook.com/profile.php?id=100009565720729" target="_blank"><span class="ti"></span></a></li>
+                <li class="menu-item"><a href="https://www.instagram.com/_nabin_21/" target="_blank"><span class="ti"></span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Media -->
+    <div class="hero-media">
+        <div class="owl-carousel" data-expand-duration="800">
+            <div class="item owl-lazy" data-src="{{setting.main_image.url}}"></div>
+        </div> <span class="overlay"></span> <span class="ti ti-spin ti-loading"></span> </div>
+    <!-- Content -->
+    <div class="content-wrap clearfix">
+        <!-- About Me -->
+            {% block mainsection %}{% endblock %}
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>&copy; 2022 <a href="{% url "frontend_homepage" %}">{{setting.site_title}}</a>. All Rights Reserved.</p>
+        </div>
+    </div>
+    <!-- Hidden Menu -->
+    <div class="additional-menu-content">
+        <h3 class="title-small">{{aboutme.title}}</h3>
+        <h2 class="title">{{setting.site_title}}</h2> <img src="{{setting.main_image.url}}" alt="">
+        <p>{{aboutme.description}}</p> <a href="https://wa.me/+9779818266466?text=I'm%20interested%20about%20your%20project" class="btn">Hire Me</a>
+        <div class="divider2"></div>
+        {% comment %} <h3 class="title-small">@rorymccan</h3>
+        <h2 class="title">Instagram</h2>
+        <div class="sb-widget fl-wrap">
+            <div class="insta-thumb">
+                <a href="#"><img src="images/insta/01.jpg" alt=""></a>
+                <a href="#"><img src="images/insta/02.jpg" alt=""></a>
+                <a href="#"><img src="images/insta/03.jpg" alt=""></a>
+                <a href="#"><img src="images/insta/04.jpg" alt=""></a>
+                <a href="#"><img src="images/insta/05.jpg" alt=""></a>
+                <a href="#"><img src="images/insta/06.jpg" alt=""></a>
+            </div>
+        </div> {% endcomment %}
+    </div>
+    <!-- My Info -->
+    <div class="my-info">
+        <div class="box">
+            <div class="field field-my-info field-separator">
+                <h6>Location</h6>
+                <p>{{setting.address}}</p>
+            </div>
+            <div class="field field-my-info field-separator">
+                <h6>E-Mail</h6>
+                <p>{{setting.email}}</p>
+            </div>
+            <div class="field field-my-info field-separator">
+                <h6>Phone</h6>
+                <p>+977 {{setting.phone}}</p>
+            </div>
+            <div class="clear"></div>
+            <button type="submit" class="button-color"><a href="{% static "frontend/white simple student cv resume.pdf" %}" download="nabinthapa.pdf"><span class="ti-download text-white">DOWNLOAD CV</span></a></button>
+        </div>
+    </div>
+    <!-- Js -->
+    <script src="{% static "frontend/assets/js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "frontend/assets/js/modernizr-custom.js" %}"></script>
+    <script src="{% static "frontend/assets/js/owl-carousel.min.js" %}"></script>
+    <script src="{% static "frontend/assets/js/functions.js" %}"></script>
+    {% block js %}{% endblock js %}
+</body>
+</html>

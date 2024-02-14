@@ -1,5 +1,5 @@
 from django import forms
-from .models import Setting,AboutMe
+from .models import Setting,AboutMe,SocialSite
 
 class SettingForm(forms.ModelForm):
     
@@ -28,3 +28,13 @@ class AboutMeForm(forms.ModelForm):
             'description':forms.TextInput(attrs={'class':'form-control','id':'description'}),
             'resume':forms.TextInput(attrs={'class':'form-control','id':'resume'})
         }          
+        
+class SocialSiteForm(forms.ModelForm):
+    
+    class Meta:
+        model=SocialSite
+        fields="__all__"
+        widgets={
+            'icon':forms.TextInput(attrs={'class':'form-control','id':"icon"}),
+            'link':forms.TextInput(attrs={'class':'form-control','id':'link'}),
+        }                  

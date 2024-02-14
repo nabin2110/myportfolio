@@ -19,4 +19,11 @@ urlpatterns = [
     path('backend/aboutme/',views.AboutMeCreateView.as_view(),name="backend_aboutme_create"),
     path('backend/aboutme/<int:pk>/detail/',views.AboutMeDetailView.as_view(),name="backend_aboutme_detail"),
     path('backend/aboutme/<int:pk>/update/',views.AboutMeUpdateView.as_view(),name='backend_aboutme_update'),
+    #socialsite
+    
+    path('backend/socialsite/create/',views.SocialSiteCreateView.as_view(),name="backend_socialsite_create"),
+    path('backend/socialsite/<int:pk>/detail/',views.SocialSiteDetailView.as_view(),name="backend_socialsite_detail"),
+    path('backend/socialsite/<int:pk>/update/',views.SocialSiteUpdateView.as_view(),name='backend_socialsite_update'),
+    path('backend/socialsite/<int:pk>/delete/',views.SocialSiteDeleteView.as_view(),name="backend_socialsite_delete"),
+    path('backend/socialsite/',views.SocialSiteListView.as_view(),name="backend_socialsite_list"),
 ]

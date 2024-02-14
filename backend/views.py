@@ -6,12 +6,12 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Setting,Service,AboutMe
-from backend.forms import SettingForm,AboutMeForm
+from .models import Setting,Service,AboutMe,SocialSite
+from backend.forms import SettingForm,AboutMeForm,SocialSiteForm
 from django.contrib.messages.views import SuccessMessageMixin
 # Create your views here.
-# class LoginRequired(LoginRequiredMixin):
-#     login_url=reverse_lazy('backend_portfolio_login')
+class LoginRequired(LoginRequiredMixin):
+    login_url=reverse_lazy('backend:backend_portfolio_login')
     
     
 class admin_login(View):
@@ -33,8 +33,8 @@ class admin_login(View):
             messages.error(request,'Please Enter Your username/password')
             return redirect(reverse('backend_portfolio_login'))    
         
-# @method_decorator(login_required,name="dispatch")
-class admin_home(View):
+@method_decorator(login_required,name="dispatch")
+class admin_home(LoginRequired,View):
     def get(self,request):
         return render(request,'backend/home.html')        
     
@@ -137,7 +137,7 @@ class ServiceListView(ListView):
     
 #aboutme
 
-#setting 
+#aboutme 
 model_name=AboutMe 
 path_name="backend/aboutme"
 class AboutMeCreateView(CreateView):
@@ -184,4 +184,33 @@ class AboutMeUpdateView(UpdateView):
     fields="__all__"
     template_name=f'{path_name}/update.html'
     
+    #socialsite 
+model_name=SocialSite 
+path_name="backend/socialsite"
+class SocialSiteCreateView(SuccessMessageMixin,CreateView):
+  model=model_name
+  fields="__all__"
+  success_message="Data inserted Successfully"
+  template_name=f'{path_name}/create.html'
+  
+  
+class SocialSiteDetailView(DetailView):
+    model=model_name
+    context_object_name='record'
+    template_name=f'{path_name}/detail.html'
+
+class SocialSiteUpdateView(SuccessMessageMixin,UpdateView):
+    model=model_name
+    fields="__all__"
+    success_message="Data updated Successfully"
+    template_name=f'{path_name}/update.html'
     
+class SocialSiteListView(ListView):
+    model=model_name
+    context_object_name='records'
+    template_name=f'{path_name}/list.html'    
+    
+class SocialSiteDeleteView(SuccessMessageMixin,DeleteView):
+    model=model_name
+    success_url='/backendportfolioofnabin/backend/socialsite/'
+    success_message="Data deleted successfullys"

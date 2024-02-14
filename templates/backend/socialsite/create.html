@@ -1,0 +1,45 @@
+{% extends "backend/layouts/section.html" %}
+{% block mainsection %}
+<div class="row">
+    {% include "backend/layouts/message.html" %}
+    <h2 class="text-center">Create Social Site</h2>
+    <form action="" method="POST" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% for field in form %}
+        <div class="mb-3">
+            <div class="form-group">
+                <label for="{{field.name}}">{{field.field.label}}</label>
+                <input type="{{field.field.widget.input_type}}" class="form-control" id="{{field.name}}" name="{{field.name}}">
+                
+            </div>
+            {% if field.errors %}
+                    <span class="text-danger">{{ field.errors|striptags }}</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Create</button>
+            </div>    
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+ <script>
+    $(document).ready(function(){
+        ClassicEditor
+            .create( document.querySelector( 'textarea' ),{
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "frontend/layouts/section.html" %}
+{% block mainsection %}
+<div class="mccan page">
+    <h3 class="title-small">Resume</h3>
+    <h2 class="title">Experience</h2>
+    <div class="content">
+        <div class="grid-container">
+            <div class="grid-column">
+               {{aboutme.resume|safe}}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

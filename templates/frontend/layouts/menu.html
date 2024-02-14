@@ -1,0 +1,24 @@
+<nav class="nav-menu">
+    <ul>
+        {% url "frontend_homepage" as url %}
+        <li class="menu-item {% if request.path == url %}current-menu-item{% endif %}"><a href="{{url}}">Home</a></li>
+        {% url "frontend_resumepage" as url %}
+        <li class="menu-item {% if request.path == url %}current-menu-item{% endif %}"><a href="{{url}}">Resume</a></li>
+        {% comment %} <li class="menu-item"><a href="portfolio.html">Portfolio</a></li>
+        <li class="menu-item menu-item-has-children"><a href="blog.html">Blog</a>
+            <a href="index.html#" class="menu-expand mdi"></a>
+            <ul class="sub-menu">
+                <li class="menu-item"><a href="post.html">Post</a></li>
+                <li class="menu-item menu-item-has-children"> <a href="#">Submenu - 1</a>
+                    <a href="index.html#" class="menu-expand mdi"></a>
+                    <ul class="sub-menu">
+                        <li class="menu-item"><a href="#">Submenu - 2</a></li>
+                        <li class="menu-item"><a href="#">Submenu - 2</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li> {% endcomment %}
+        {% url "frontend_contactpage" as url %}
+        <li class="menu-item {% if request.path == url %}current-menu-item{% endif %}"><a href="{{url}}">Contact</a></li>
+    </ul>
+</nav>

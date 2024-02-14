@@ -33,6 +33,16 @@
       </ul>
     </li>
     <li class>
+      <a class="has-arrow" href="#" aria-expanded="false">
+        <img src="{% static "backend/img/menu-icon/2.svg" %}" alt>
+        <span>SocialSite</span>
+      </a>
+      <ul>
+        <li><a href="{% url "backend_socialsite_list" %}">View Social Sites</a></li>
+        <li><a href="{% url "backend_socialsite_create" %}">Create Social Sites</a></li>
+      </ul>
+    </li>
+    <li class>
         <a class="has-arrow" href="#" aria-expanded="false">
           <img src="{% static "backend/img/menu-icon/2.svg" %}" alt>
           <span>Setting</span>

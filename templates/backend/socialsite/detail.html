@@ -1,0 +1,23 @@
+{% extends "backend/layouts/section.html" %}
+{% block mainsection %}
+<div class="row">
+    <h2 class="text-center">Detail socialsite <a href="{% url "backend_socialsite_list" %}" class="btn btn-info">List Social Site</a></h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <td>{{record.id}}</td>
+        </tr>
+        <tr>
+            <th>Icon</th>
+            <td>{{record.icon}}</td>
+        </tr>
+        <tr>
+            <th>Link</th>
+            <td>{{record.link}}</td>
+        </tr>
+        <tr>
+            <th><a href="{% url "backend_socialsite_update" record.pk %}" class="btn btn-warning">Update</a></th>
+        </tr>
+    </table>
+</div>
+{% endblock %}
